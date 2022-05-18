@@ -21,6 +21,9 @@ async function deploy() {
             constructor(uint _x) {
                 x = _x;
             }
+            function addOne() public {
+                x++;
+            }
         }
     `;
 
@@ -35,8 +38,13 @@ async function deploy() {
     const factory = ethers.ContractFactory.fromSolidity(Contract, wallet);
     const contract = await factory.deploy(5);
 
-    const x = await contract.x();
+    let x = await contract.x();
     console.log(x.toString());
+    await contract.addOne();
+    x = await contract.x();
+
+    console.log(x.toString());
+
 }
 
 deploy();

@@ -43,7 +43,7 @@ async function deploy() {
     await contract.addOne();
     x = await contract.x();
 
-    console.log(x.toString());
+//     console.log(x.toString());
 
 }
 
